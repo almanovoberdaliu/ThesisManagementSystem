@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WHzWir2odzIHNEAl7b/8xFyseWW2xzMmh9RRutS5d2dOqY90qbIkbJvX+dDIAg49ZYw/gD5X8asUCymDOFrNuA==",
+  "dgSpecHash": "CU+KwVOkI+COFqN1UxcoEQyxGXMRtCfBh82nuIN/Ki1j5RO8/WspCKbzRGAI4bBn7PXG9p1P/m96KnVyas4NIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesesManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

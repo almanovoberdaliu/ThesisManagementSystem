@@ -3514,11 +3514,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesesManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
       "projectName": "ThesisManagementSystem",
-      "projectPath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesesManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesisManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesesManagementSystem\\ThesisManagementSystem\\ThesisManagementSystem\\obj\\",
+      "outputPath": "C:\\Users\\LENOVO\\Desktop\\Alma Novobërdaliu\\Projects\\ThesisManagementSystem\\ThesisManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",

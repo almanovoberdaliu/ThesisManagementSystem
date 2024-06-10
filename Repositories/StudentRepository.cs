@@ -76,68 +76,28 @@ namespace ThesisManagementSystem.Repositories
 
         public async Task<int> GetYearOfStudies(int studentId)
         {
-            var filteredData = _dbContext.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
-
-            if (filteredData == null)
-            {
-                return default;
-            }
-
-            int currentYear = DateTime.Now.Year;
-
-            return currentYear - filteredData.YearOfRegistration;
+            var student = await _dbContext.Students.FindAsync(studentId);
+            return student == null ? 0 : DateTime.Now.Year - student.YearOfRegistration;
         }
         
         public async Task<string> ExpirationOfStudies(int studentId)
         {
-            var getYears =await GetYearOfStudies(studentId);
-
-            if(getYears > 6)
-            {
-                return "The student's studies have expired.";
-            }
-            else
-            {
-                return "The student's studies are still valid.";
-            }
+            var yearsOfStudy = await GetYearOfStudies(studentId);
+            return yearsOfStudy >= 6 ? "The student's studies have expired." : "The student's studies are still valid.";
         }
 
         // metod qe na duhet per metoden MetAllCriteria 
         public async Task<bool> GetEcts(int studentId)
         {
-                var filteredData = _dbContext.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
-
-                if (filteredData == null)
-                {
-                    return default;
-                }
-
-                if (filteredData.ECTS >= 158)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }         
+            var student = await _dbContext.Students.FindAsync(studentId);
+            return student?.ECTS >= 158;
         }
 
         // metod qe na duhet per metoden MetAllCriteria 
         public async Task<bool> GetSemesterOfUnfinishedExams(int studentId)
         {
-            var filteredData = _dbContext.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
-
-            if (filteredData == null)
-            {
-                return default;
-            }
-
-            if (filteredData.SemesterId >= 4)
-            {
-                return true;
-            }
-            else
-                return false;
+            var student = await _dbContext.Students.FindAsync(studentId);
+            return student?.SemesterId >= 4;
         }
 
         // metod qe na duhet me i listu modulet ne baze te semestrit qe perzgjedh studeti(dropdown list ne front)
@@ -152,22 +112,7 @@ namespace ThesisManagementSystem.Repositories
         //ni mesazh njoftus
         public async Task<bool> HasMetTheCriteriaAsync(int studentId)
         {
-            var filteredData = _dbContext.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
-
-            if (filteredData == null)
-            {
-                return default;
-            }
-
-            if (await GetEcts(studentId) && await GetSemesterOfUnfinishedExams(studentId))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-               
+            return await GetEcts(studentId) && await GetSemesterOfUnfinishedExams(studentId);
         }
     }
 }
