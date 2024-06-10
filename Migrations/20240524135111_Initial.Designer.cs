@@ -11,8 +11,8 @@ using ThesisManagementSystem.Data;
 namespace ThesisManagementSystem.Migrations
 {
     [DbContext(typeof(DbContextClass))]
-    [Migration("20240520094551_initial")]
-    partial class initial
+    [Migration("20240524135111_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,12 +48,54 @@ namespace ThesisManagementSystem.Migrations
                     b.ToTable("FileDetails");
                 });
 
+            modelBuilder.Entity("ThesisManagementSystem.Models.Semester", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Semester");
+                });
+
+            modelBuilder.Entity("ThesisManagementSystem.Models.Specialization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FieldName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Specializations");
+                });
+
             modelBuilder.Entity("ThesisManagementSystem.Models.StudentDetails", b =>
                 {
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ECTS")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("HasUnfinishedExams")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SemesterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpecializationId")
                         .HasColumnType("int");
 
                     b.Property<string>("StudentEmail")
@@ -68,12 +110,19 @@ namespace ThesisManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UnfinishedExams")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("YearOfRegistration")
                         .HasColumnType("int");
 
                     b.HasKey("StudentId");
 
                     b.HasIndex("ID");
+
+                    b.HasIndex("SemesterId");
+
+                    b.HasIndex("SpecializationId");
 
                     b.ToTable("Students");
                 });
@@ -83,10 +132,26 @@ namespace ThesisManagementSystem.Migrations
                     b.HasOne("ThesisManagementSystem.Models.FileDetails", "FileDetails")
                         .WithMany()
                         .HasForeignKey("ID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ThesisManagementSystem.Models.Semester", "Semester")
+                        .WithMany()
+                        .HasForeignKey("SemesterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ThesisManagementSystem.Models.Specialization", "Specialization")
+                        .WithMany()
+                        .HasForeignKey("SpecializationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("FileDetails");
+
+                    b.Navigation("Semester");
+
+                    b.Navigation("Specialization");
                 });
 #pragma warning restore 612, 618
         }

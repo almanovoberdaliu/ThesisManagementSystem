@@ -28,6 +28,11 @@ namespace ThesisManagementSystem.Handlers
             studentDetails.StudentEmail = request.StudentEmail;
             studentDetails.YearOfRegistration = request.YearOfRegistration;
             studentDetails.ID = request.ID;
+            studentDetails.SpecializationId = request.SpecializationId;
+            studentDetails.ECTS= request.ECTS;
+            studentDetails.HasUnfinishedExams= request.HasUnfinishedExams;
+            studentDetails.UnfinishedExams = request.UnfinishedExams;
+            studentDetails.SemesterId = request.SemesterId;
 
             return await _studentRepository.UpdateStudentAsync(studentDetails);
         }    

@@ -25,7 +25,12 @@ namespace ThesisManagementSystem.Handlers
                 StudentSurname= request.StudentSurname,
                 StudentEmail= request.StudentEmail,
                 YearOfRegistration = request.YearOfRegistration,
-                FileId = request.ID
+                FileId = request.ID,
+                SpecializationId = request.SpecializationId,
+                ECTS = request.ECTS,
+                HasUnfinishedExams= request.HasUnfinishedExams,
+                UnfinishedExams= request.HasUnfinishedExams ? request.UnfinishedExams: null,
+                SemesterId = request.SemesterId
             };
 
             return await _studentRepository.AddStudentAsync(studentDetails);

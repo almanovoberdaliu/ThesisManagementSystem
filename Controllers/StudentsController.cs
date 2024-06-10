@@ -5,6 +5,7 @@ using ThesisManagementSystem.Dtos;
 using ThesisManagementSystem.Models;
 using ThesisManagementSystem.Queries;
 
+
 namespace ThesisManagementSystem.Controllers
 {
     [Route("api/[controller]")]
@@ -12,7 +13,6 @@ namespace ThesisManagementSystem.Controllers
     public class StudentsController : ControllerBase
     {
         private readonly IMediator mediator;
-
         public StudentsController(IMediator mediator)
         {
             this.mediator = mediator;
@@ -44,7 +44,13 @@ namespace ThesisManagementSystem.Controllers
                 studentDetails.StudentSurname,
                 studentDetails.StudentEmail,
                 studentDetails.YearOfRegistration,
-                studentDetails.FileId));
+                studentDetails.FileId,
+                studentDetails.SpecializationId,
+                studentDetails.ECTS,
+                studentDetails.HasUnfinishedExams,
+                studentDetails.UnfinishedExams,
+                studentDetails.SemesterId));
+
             return studentDetail;
         }
 
@@ -57,7 +63,13 @@ namespace ThesisManagementSystem.Controllers
                studentDetails.StudentSurname,
                studentDetails.StudentEmail,
                studentDetails.YearOfRegistration,
-               studentDetails.ID));
+               studentDetails.ID,
+               studentDetails.SpecializationId,
+               studentDetails.ECTS,
+               studentDetails.HasUnfinishedExams,
+               studentDetails.UnfinishedExams,
+               studentDetails.SemesterId));
+
             return isStudentDetailUpdated;
         }
 
@@ -65,6 +77,42 @@ namespace ThesisManagementSystem.Controllers
         public async Task<int> DeleteStudentAsync(int Id)
         {
             return await mediator.Send(new DeleteStudentCommand() { StudentId = Id });
+        }
+
+        [HttpGet("expiration-of-studies/{studentId}")]
+        public async Task<IActionResult> GetExpirationOfStudies(int studentId)
+        {
+            var result = await mediator.Send(new GetYearOfStudiesQuery { StudentId = studentId });
+            return Ok(result);
+        }
+
+
+        [HttpGet("get-ects/{studentId}")]
+        public async Task<IActionResult> GetEcts(int studentId)
+        {
+            var result = await mediator.Send(new GetECTSQuery { StudentId = studentId });
+            return Ok(result);
+        }
+
+        [HttpGet("get-semester-of-unfinished-exams/{studentId}")]
+        public async Task<IActionResult> GetSemesterOfUnfinishedExams(int studentId)
+        {
+            var result = await mediator.Send(new GetSemesterOfUnfinishedExamsQuery { StudentId = studentId });
+            return Ok(result);
+        }
+
+        [HttpGet("get-modules-by-semesterId/{semesterId}")]
+        public async Task<IActionResult> GetModulesBySemester(int semesterId)
+        {
+            var result = await mediator.Send(new GetModulesBySemesterQuery { SemesterID = semesterId });
+            return Ok(result);
+        }
+
+        [HttpGet("has-met-the-criteria/{studentId}")]
+        public async Task<IActionResult> HasMetTheCriteria(int studentId)
+        {
+            var result = await mediator.Send(new HasMetTheCriteriaQuery { StudentId = studentId });
+            return Ok(result);
         }
 
 

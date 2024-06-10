@@ -8,5 +8,10 @@
         public string StudentEmail { get; set; }
         public int YearOfRegistration { get; set; }
         public int FileId { get; set; }
+        public int SpecializationId { get; set; }
+        public int ECTS { get; set; }
+        public bool HasUnfinishedExams { get; set; }
+        public string? UnfinishedExams { get; set; }
+        public int SemesterId { get; set; }
     }
 }
