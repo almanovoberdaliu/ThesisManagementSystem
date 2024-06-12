@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThesisManagementSystem", "ThesisManagementSystem\ThesisManagementSystem.csproj", "{C2AEB2F2-1EFC-424F-969B-04BBA50716B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThesisManagementSystem", "ThesisManagementSystem\ThesisManagementSystem.csproj", "{C2AEB2F2-1EFC-424F-969B-04BBA50716B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{667D1C75-A668-408F-8843-DCFC573D4EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C2AEB2F2-1EFC-424F-969B-04BBA50716B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2AEB2F2-1EFC-424F-969B-04BBA50716B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2AEB2F2-1EFC-424F-969B-04BBA50716B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667D1C75-A668-408F-8843-DCFC573D4EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667D1C75-A668-408F-8843-DCFC573D4EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667D1C75-A668-408F-8843-DCFC573D4EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667D1C75-A668-408F-8843-DCFC573D4EAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
