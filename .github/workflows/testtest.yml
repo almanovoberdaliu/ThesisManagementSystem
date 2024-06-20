@@ -18,10 +18,10 @@ jobs:
         dotnet-version: '7.0.x'  # Specify the .NET version
 
     - name: Restore dependencies
-      run: dotnet restore ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj
+      run: dotnet restore ThesisManagementSystem/ThesisManagementSystem.csproj
 
     - name: Build
-      run: dotnet build ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --configuration Release --no-restore
+      run: dotnet build ThesisManagementSystem/ThesisManagementSystem.csproj --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --no-build --verbosity normal
+      run: dotnet test ThesisManagementSystem/ThesisManagementSystem.csproj --no-build --verbosity normal
