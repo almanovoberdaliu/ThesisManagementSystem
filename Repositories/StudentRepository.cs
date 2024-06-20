@@ -83,7 +83,7 @@ namespace ThesisManagementSystem.Repositories
         public async Task<string> ExpirationOfStudies(int studentId)
         {
             var yearsOfStudy = await GetYearOfStudies(studentId);
-            return yearsOfStudy >= 6 ? "The student's studies have expired!!!." : "The student's studies are still valid.";
+            return yearsOfStudy >= 6 ? "The student's studies have expired!!" : "The student's studies are still valid!!";
         }
 
         // metod qe na duhet per metoden MetAllCriteria 
@@ -109,7 +109,7 @@ namespace ThesisManagementSystem.Repositories
 
         // met all the criteria
         // ne front: e kqyr a eshte e sakte, nese po e  bon enable butonin per next, nese jo e bon disable edhe e shfaq
-        //ni mesazh njoftus
+        // ni mesazh njoftus
         public async Task<bool> HasMetTheCriteriaAsync(int studentId)
         {
             return await GetEcts(studentId) && await GetSemesterOfUnfinishedExams(studentId);
