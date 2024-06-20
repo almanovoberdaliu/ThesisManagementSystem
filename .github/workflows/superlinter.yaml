@@ -1,17 +1,27 @@
-name: Super-Linter
+name: Tests
 
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  super-lint:
-    name: Lint code base
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.0.x'  # Specify the .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj
+
+    - name: Build
+      run: dotnet build ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --no-build --verbosity normal
