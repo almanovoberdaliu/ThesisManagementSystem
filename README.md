@@ -6,5 +6,6 @@ Ekzekutimi i kodit
 4. Open Package Manager Console
 5. Add a new migration
 6. Update database
-7. Run
-8. 
+7. Run on swagger
+
+
