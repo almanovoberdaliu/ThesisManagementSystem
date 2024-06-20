@@ -1,0 +1,27 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.0.x'  # Specify the .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore Projects/ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj
+   
+    - name: Build
+      run: dotnet build Projects/ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test Projects/ThesisManagementSystem/ThesisManagementSystem/ThesisManagementSystem.csproj --no-build --verbosity normal
