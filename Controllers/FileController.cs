@@ -56,7 +56,7 @@ namespace ThesisManagementSystem.Controllers
         [HttpGet("DownloadFile")]
         public async Task<ActionResult> DownloadFile(int id)
         {
-            if (id < 1)
+            if (id <= 0)
             {
                 return BadRequest();
             }
